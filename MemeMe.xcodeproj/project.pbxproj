@@ -301,6 +301,7 @@
 				8E721E151F2B8804008829DD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

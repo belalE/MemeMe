@@ -65,6 +65,8 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         ShareButton.isEnabled = false
         TopTextField.textAlignment = NSTextAlignment.center
         BottomTextField.textAlignment = NSTextAlignment.center
+        TopTextField.delegate = self
+        BottomTextField.delegate = self
         
     }
     
@@ -101,13 +103,14 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         imagePicker.delegate = self
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
-        ShareButton.isEnabled = true
+        
     }
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true, completion: nil)
+        
         
     }
     
@@ -116,11 +119,13 @@ class ViewController: UIViewController,UIImagePickerControllerDelegate,UINavigat
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imageView.image = image
             dismiss(animated: true, completion: nil)
+            ShareButton.isEnabled = true
         }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+        
         
     }
     

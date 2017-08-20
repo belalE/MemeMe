@@ -28,18 +28,6 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         NSFontAttributeName: UIFont(name:"HelveticaNeue-CondensedBlack", size: 30)!,
         NSStrokeWidthAttributeName: -3.0]
 
-    
-    struct Meme {
-        
-        var toptext = ""
-        var bottomtext = ""
-        
-        var originalImage : UIImage
-        
-        var memedImage : UIImage
-        
-    }
-    
     // Basic Functions
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +67,13 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
         unsubscribeFromKeyboardHideNotifications()
        
     }
+    
+    @IBAction func CancelButton(_ sender: UIBarButtonItem) {
+        
+    let navController = UINavigationController()
+        navController.popToRootViewController(animated: true)
+    }
+    
 
     //TextField Actions
     
@@ -211,6 +206,10 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     func save() {
         let memedimage = generateMemedImage()
         let meme = Meme(toptext: TopTextField.text!, bottomtext: BottomTextField.text!, originalImage: imageView.image!, memedImage: memedimage)
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     

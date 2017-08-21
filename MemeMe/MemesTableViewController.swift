@@ -11,10 +11,11 @@ import UIKit
 class MemesTableViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
    
     @IBOutlet weak var TableView: UITableView!
-
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        var memes = appDelegate.memes
+        let memes = appDelegate.memes
         
         return memes.count
     }
@@ -32,11 +33,24 @@ class MemesTableViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var memes = appDelegate.memes
+        let meme = memes[indexPath.row]
+        performSegue(withIdentifier: "TableDetailSegue", sender: meme.memedImage)
+
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+        if segue.identifier == "TableDetailSegue" {
+        let MDVC = segue.destination as! MemeDetailViewController
+        MDVC.memedImage = sender as! UIImage
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         TableView.reloadData()
     }
+    
 }

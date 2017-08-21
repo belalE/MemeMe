@@ -76,7 +76,8 @@ class MemesCollectionViewController: UICollectionViewController {
         // #warning Incomplete implementation, return the number of items
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        var memes = appDelegate.memes
+        let
+    memes = appDelegate.memes
         return memes.count
     }
 
@@ -98,6 +99,21 @@ class MemesCollectionViewController: UICollectionViewController {
     
         
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        var memes = appDelegate.memes
+        let meme = memes[indexPath.row]
+        performSegue(withIdentifier: "CollectionDetailSegue", sender: meme.memedImage)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CollectionDetailSegue" {
+        let MDVC = segue.destination as! MemeDetailViewController
+       MDVC.memedImage = sender as! UIImage
+        }
+    }
+
 
     // MARK: UICollectionViewDelegate
 

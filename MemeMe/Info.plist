@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSVisibleInClassic</key>
+	<false/>
 	<key>NSCameraUsageDescription</key>
 	<string>We need access to your camera so you can take photos and  edit them into a meme</string>
 	<key>NSPhotoLibraryUsageDescription</key>

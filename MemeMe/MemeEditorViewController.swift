@@ -16,6 +16,10 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var TopTextField: UITextField!
     @IBOutlet weak var BottomTextField: UITextField!
+    @IBOutlet weak var BottomToolbar: UIToolbar!
+    @IBOutlet weak var TopToolbar: UIToolbar!
+    
+    
     
    
     //properties
@@ -166,6 +170,8 @@ class MemeEditorViewController: UIViewController,UIImagePickerControllerDelegate
     func HideToolbarandNavbar(bool:Bool) {
         navigationController?.setToolbarHidden(bool, animated: true)
         navigationController?.setNavigationBarHidden(bool, animated: true)
+        BottomToolbar.isHidden = bool
+        TopToolbar.isHidden = bool
     }
     
     
